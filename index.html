@@ -81,6 +81,8 @@
         <input type="text" id="tel" name="tel" required>
         <label for="email">Email :</label>
         <input type="email" id="email" name="email" required>
+        <label for="email">Mot de Passe :</label>
+        <input type="password" id="password" name="password" required>
         <label for="job">Poste souhaité :</label>
         <select id="job" name="job">
           <option value="web-developer">Développeur Web</option>
@@ -126,6 +128,7 @@
       const tel = document.getElementById("tel").value;
       const email = document.getElementById("email").value;
       const job = document.getElementById("job").value;
+      const password= document.getElementById("password").value;
       const cvFile = document.getElementById("cv").files[0]; // Récupère le fichier téléversé
 
     // Vérification du fichier
@@ -146,6 +149,7 @@
           tel,
           email,
           job,
+          password,
           cv: fileContent, // Sauvegarde le contenu du CV
           created_at: new Date()
         })
