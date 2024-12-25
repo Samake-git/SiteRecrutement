@@ -59,14 +59,24 @@
     <div class="container">
       <h2>Offres d'emploi disponibles (Postulez maintenant)</h2>
       <ul>
-        <li><strong>Développeur Web</strong> - Poste basé à Bamako</li>
-        <li><strong>Gestionnaire RH</strong> - Poste basé à Bamako</li>
-        <li><strong>Chef de Projet</strong> - Poste basé à Mopti</li>
-        <li><strong>Comptable</strong> - Poste basé à Ségou</li>
-        <li><strong>Médecin</strong> - Poste basé à Kayes</li>
+        <li><a href="#" class="job-link" data-job="Développeur Web" data-location="Bamako" data-description="Nous recherchons un développeur web expérimenté pour rejoindre notre équipe.">Développeur Web</a> - Poste basé à Bamako</li>
+        <li><a href="#" class="job-link" data-job="Gestionnaire RH" data-location="Bamako" data-description="Cherche un gestionnaire des ressources humaines pour gérer les équipes.">Gestionnaire RH</a> - Poste basé à Bamako</li>
+        <li><a href="#" class="job-link" data-job="Chef de Projet" data-location="Mopti" data-description="Un chef de projet pour coordonner des projets innovants.">Chef de Projet</a> - Poste basé à Mopti</li>
+        <li><a href="#" class="job-link" data-job="Comptable" data-location="Ségou" data-description="Un comptable pour gérer les finances de l'entreprise.">Comptable</a> - Poste basé à Ségou</li>
+        <li><a href="#" class="job-link" data-job="Médecin" data-location="Kayes" data-description="Nous recrutons un médecin pour notre clinique à Kayes.">Médecin</a> - Poste basé à Kayes</li>
       </ul>
     </div>
   </section>
+
+  <!-- Modale pour afficher les détails du poste -->
+  <div id="jobModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="jobTitle"></h2>
+      <p><strong>Lieu :</strong> <span id="jobLocation"></span></p>
+      <p><strong>Description :</strong> <span id="jobDescription"></span></p>
+    </div>
+  </div>
 
   <!-- Section Candidature -->
   <section id="apply">
@@ -91,6 +101,10 @@
           <option value="medecin">Médecin</option>
           <option value="infirmier">Infirmier</option>
         </select>
+
+        <label for="cv">Téléchargez votre CV :</label>
+        <input type="file" id="cv" name="cv" accept=".pdf, .doc, .docx" required>
+
         <button type="submit">Envoyer</button>
       </form>
     </div>
@@ -122,15 +136,27 @@
       const tel = document.getElementById("tel").value;
       const email = document.getElementById("email").value;
       const job = document.getElementById("job").value;
+      const cvFile = document.getElementById("cv").files[0]; // Récupère le fichier téléversé
 
-      // Enregistrement dans Firebase Firestore
-      db.collection("candidatures")
+    // Vérification du fichier
+    if (!cvFile) {
+      alert("Veuillez téléverser un CV.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function () {
+      const fileContent = reader.result; // Contenu du fichier en base64
+
+       // Enregistrement dans Firebase Firestore
+       db.collection("candidatures")
         .add({
           name,
           first,
           tel,
           email,
           job,
+          cv: fileContent, // Sauvegarde le contenu du CV
           created_at: new Date()
         })
         .then(() => {
@@ -141,7 +167,42 @@
           console.error("Erreur lors de l'enregistrement :", error);
           alert("Une erreur est survenue. Veuillez réessayer.");
         });
+    };
+    reader.readAsDataURL(cvFile); // Lit le fichier en base64
+  });
+
+
+   // Gestion des clics sur les offres d'emploi
+   const jobLinks = document.querySelectorAll('.job-link');
+    const modal = document.getElementById("jobModal");
+    const closeModal = document.querySelector(".close");
+
+    jobLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const jobTitle = link.getAttribute('data-job');
+        const jobLocation = link.getAttribute('data-location');
+        const jobDescription = link.getAttribute('data-description');
+
+        document.getElementById("jobTitle").innerText = jobTitle;
+        document.getElementById("jobLocation").innerText = jobLocation;
+        document.getElementById("jobDescription").innerText = jobDescription;
+
+        modal.style.display = "block"; // Affiche la modale
+      });
     });
-  </script>
+
+    // Fermer la modale
+    closeModal.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    
+</script>
 </body>
 </html>
