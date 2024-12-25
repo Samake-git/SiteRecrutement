@@ -5,24 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Site de Recrutement</title>
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.x/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.x/firebase-firestore.js"></script>
+  <script>
+    // Configuration Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCfjS6ArSb2zo60xJ0bg0PTv_lmGDmJaSc",
+      authDomain: "site-recrutement-4cb95.firebaseapp.com",
+      projectId: "site-recrutement-4cb95",
+      storageBucket: "site-recrutement-4cb95.appspot.com",
+      messagingSenderId: "810818646565",
+      appId: "1:810818646565:web:d5afb035cc2f24a9b245cc"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo-container">
-                <img src="images/logosSite.png" alt="Logo Recrutement Pro" class="logo">
-              </div>
-          <h1>Recrutement Pro</h1>
-          <nav>
-            <ul>
-              <li><a href="#home">Accueil</a></li>
-              <li><a href="#jobs">Offres</a></li>
-              <li><a href="#apply">Candidature</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>      
+  <header>
+    <div class="container">
+      <div class="logo-container">
+        <img src="images/logosSite.png" alt="Logo Recrutement Pro" class="logo">
+      </div>
+      <h1>Recrutement Pro</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Accueil</a></li>
+          <li><a href="#jobs">Offres</a></li>
+          <li><a href="#apply">Candidature</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>      
 
   <section id="home">
     <div class="container">
@@ -48,7 +67,7 @@
   <section id="apply">
     <div class="container">
       <h2>Soumettre une candidature</h2>
-      <form action="#">
+      <form id="application-form">
         <label for="name">Nom :</label>
         <input type="text" id="name" name="name" required>
         <label for="first">Prénom :</label>
@@ -57,8 +76,6 @@
         <input type="text" id="tel" name="tel" required>
         <label for="email">Email :</label>
         <input type="email" id="email" name="email" required>
-        <label for="text">Mot de passe Email :</label>
-        <input type="email" id="password" name="password" required>
         <label for="job">Poste souhaité :</label>
         <select id="job" name="job">
           <option value="web-developer">Développeur Web</option>
@@ -69,8 +86,6 @@
           <option value="medecin">Medecin</option>
           <option value="infirmier">Infirmier</option>
         </select>
-        <label for="cv">Téléchargez votre CV :</label>
-        <input type="file" id="cv" name="cv">
         <button type="submit">Envoyer</button>
       </form>
     </div>
@@ -89,5 +104,38 @@
       <p>&copy; 2024 Recrutement Pro. Tous droits réservés.</p>
     </div>
   </footer>
+
+  <!-- Script pour gérer le formulaire -->
+  <script>
+    document.querySelector("#application-form").addEventListener("submit", (e) => {
+      e.preventDefault(); // Empêche le rechargement de la page
+
+      // Récupération des données du formulaire
+      const name = document.getElementById("name").value;
+      const first = document.getElementById("first").value;
+      const tel = document.getElementById("tel").value;
+      const email = document.getElementById("email").value;
+      const job = document.getElementById("job").value;
+
+      // Enregistrement dans Firebase Firestore
+      db.collection("candidatures")
+        .add({
+          name,
+          first,
+          tel,
+          email,
+          job,
+          created_at: new Date()
+        })
+        .then(() => {
+          alert("Votre candidature a été enregistrée avec succès !");
+          document.querySelector("#application-form").reset(); // Réinitialise le formulaire
+        })
+        .catch((error) => {
+          console.error("Erreur lors de l'enregistrement :", error);
+          alert("Une erreur est survenue. Veuillez réessayer.");
+        });
+    });
+  </script>
 </body>
 </html>
