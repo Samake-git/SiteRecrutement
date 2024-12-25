@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails du Poste</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Détails du Poste</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html#home">Accueil</a></li>
+          <li><a href="index.html#jobs">Offres</a></li>
+          <li><a href="index.html#apply">Candidature</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="job-details">
+    <div class="container">
+      <h2 id="jobTitle"></h2>
+      <p><strong>Lieu :</strong> <span id="jobLocation"></span></p>
+      <p><strong>Type de contrat :</strong> <span id="jobContract"></span></p>
+      <p><strong>Salaire :</strong> <span id="jobSalary"></span></p>
+      <p><strong>Entreprise :</strong> <span id="jobCompany"></span></p>
+      <p><strong>Description :</strong> <span id="jobDescription"></span></p>
+      <p><strong>Qualifications :</strong> <span id="jobQualifications"></span></p>
+      <p><strong>Expérience requise :</strong> <span id="jobExperience"></span></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Recrutement Pro. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Récupération des paramètres de l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const jobTitle = urlParams.get('title');
+    const jobLocation = urlParams.get('location');
+    const jobContract = urlParams.get('contract');
+    const jobSalary = urlParams.get('salary');
+    const jobCompany = urlParams.get('company');
+    const jobDescription = urlParams.get('description');
+    const jobQualifications = urlParams.get('qualifications');
+    const jobExperience = urlParams.get('experience');
+
+    // Affichage des détails du poste
+    document.getElementById("jobTitle").innerText = jobTitle;
+    document.getElementById("jobLocation").innerText = jobLocation;
+    document.getElementById("jobContract").innerText = jobContract;
+    document.getElementById("jobSalary").innerText = jobSalary;
+    document.getElementById("jobCompany").innerText = jobCompany;
+    document.getElementById("jobDescription").innerText = jobDescription;
+    document.getElementById("jobQualifications").innerText = jobQualifications;
+    document.getElementById("jobExperience").innerText = jobExperience;
+  </script>
+</body>
+</html>
