@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site de Recrutement</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/logosSite.png" alt="Logo Recrutement Pro" class="logo">
+              </div>
+          <h1>Recrutement Pro</h1>
+          <nav>
+            <ul>
+              <li><a href="#home">Accueil</a></li>
+              <li><a href="#jobs">Offres</a></li>
+              <li><a href="#apply">Candidature</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>      
+
+  <section id="home">
+    <div class="container">
+      <h2>Bienvenue sur Recrutement Pro</h2>
+      <p>Trouvez votre emploi de rêve dès aujourd'hui au Mali!</p>
+      <img src="images/img78.jpg" alt="Image de recrutement" class="home-image">
+    </div>
+  </section>
+
+  <section id="jobs">
+    <div class="container">
+      <h2>Offres d'emploi disponible (postuler maintenant)</h2>
+      <ul>
+        <li><strong>Développeur Web</strong> - Poste basé à Bamako</li>
+        <li><strong>Gestionnaire RH</strong> - Poste basé à Bamako</li>
+        <li><strong>Chef de Projet</strong> - Poste basé à Mopti</li>
+        <li><strong>Comptable</strong> - Poste basé à Segou</li>
+        <li><strong>Medecin</strong> - Poste basé à Kaye</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="apply">
+    <div class="container">
+      <h2>Soumettre une candidature</h2>
+      <form action="#">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" required>
+        <label for="first">Prénom :</label>
+        <input type="text" id="first" name="first" required>
+        <label for="tel">Telephone :</label>
+        <input type="text" id="tel" name="tel" required>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+        <label for="text">Mot de passe Email :</label>
+        <input type="email" id="password" name="password" required>
+        <label for="job">Poste souhaité :</label>
+        <select id="job" name="job">
+          <option value="web-developer">Développeur Web</option>
+          <option value="hr-manager">Gestionnaire RH</option>
+          <option value="project-manager">Chef de Projet</option>
+          <option value="reseaux">Administrateur Réseaux</option>
+          <option value="comptable">Comptable</option>
+          <option value="medecin">Medecin</option>
+          <option value="infirmier">Infirmier</option>
+        </select>
+        <label for="cv">Téléchargez votre CV :</label>
+        <input type="file" id="cv" name="cv">
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contactez-nous</h2>
+      <p>Email : contact@recrutementpro.com</p>
+      <p>Téléphone : +223  72 77 58 83</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Recrutement Pro. Tous droits réservés.</p>
+    </div>
+  </footer>
+</body>
+</html>

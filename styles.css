@@ -1,0 +1,171 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+}
+ 
+/* Conteneur pour le logo */
+.logo-container {
+    width: 150px; /* Taille ajustable selon vos besoins */
+    height: 150px; /* Assurez une hauteur égale pour un cercle parfait */
+    border-radius: 50%; /* Crée un cercle */
+    overflow: hidden; /* Cache les parties dépassantes de l'image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4CAF50; /* Fond visible si l'image est petite */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Effet 3D */
+    margin-right: 15px;
+}
+
+.logo {
+    width: 100%; /* S'adapte à la largeur du conteneur */
+    height: auto; /* Maintient les proportions de l'image */
+}
+
+  
+
+
+/* Header */
+header {
+    background: linear-gradient(to right, #4CAF50, #45a049);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+header h1 {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+header nav ul li {
+    margin: 0 15px;
+}
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+header nav ul li a:hover {
+    color: #ffeb3b;
+}
+
+/* Sections */
+section {
+    padding: 40px 0;
+    margin: 20px 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+section#home {
+    background: linear-gradient(to bottom, #4CAF50, #ffffff);
+    text-align: center;
+    color: white;
+    padding: 60px 0;
+    border-radius: 0;
+}
+section#home h2 {
+    font-size: 2.5em;
+}
+section#home p {
+    font-size: 1.2em;
+    margin-top: 15px;
+}
+section#jobs ul {
+    list-style: none;
+    padding: 0;
+}
+section#jobs li {
+    background: #e9f5e9;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    color: #333;
+}
+section#jobs li:hover {
+    background: #d9f5d9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulaire */
+form {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+form input,
+form select,
+form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+form button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+form button:hover {
+    background: #45a049;
+}
+
+/* Section Contact */
+section#contact {
+    background: linear-gradient(to right, #4CAF50, #45a049);
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    border-radius: 10px;
+}
+section#contact p {
+    font-size: 1.1em;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
