@@ -68,16 +68,6 @@
     </div>
   </section>
 
-  <!-- Modale pour afficher les détails du poste -->
-  <div id="jobModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 id="jobTitle"></h2>
-      <p><strong>Lieu :</strong> <span id="jobLocation"></span></p>
-      <p><strong>Description :</strong> <span id="jobDescription"></span></p>
-    </div>
-  </div>
-
   <!-- Section Candidature -->
   <section id="apply">
     <div class="container">
@@ -172,36 +162,6 @@
   });
 
 
-   // Gestion des clics sur les offres d'emploi
-   const jobLinks = document.querySelectorAll('.job-link');
-    const modal = document.getElementById("jobModal");
-    const closeModal = document.querySelector(".close");
-
-    jobLinks.forEach(link => {
-      link.addEventListener('click', (event) => {
-        event.preventDefault();
-        const jobTitle = link.getAttribute('data-job');
-        const jobLocation = link.getAttribute('data-location');
-        const jobDescription = link.getAttribute('data-description');
-
-        document.getElementById("jobTitle").innerText = jobTitle;
-        document.getElementById("jobLocation").innerText = jobLocation;
-        document.getElementById("jobDescription").innerText = jobDescription;
-
-        modal.style.display = "block"; // Affiche la modale
-      });
-    });
-
-    // Fermer la modale
-    closeModal.onclick = function() {
-      modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
 
 </script>
 </body>
